@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Date Night Com Minha Momoi</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        #prompt {
+            position: absolute;
+            width: 100%;
+            height: auto;
+            max-width: 300px;
+            background-color: #C6C6C6;
+            padding: 40px 20px;
+            display: none;
+            transition: top 0.5s, left 0.5s;
+            /* Center the prompt initially */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 10px;
+            box-shadow: #00000067 6px 5px 6px;
+        }
+
+        button {
+            min-width: 50px;
+            min-height: 25px;
+            border: 1px white solid;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Roboto';
+        }
+
+        button:hover {
+            border: 1px #314cc48a solid;
+
+        }
+
+        html {
+            background-color: #314CC4;
+            font-family: 'Roboto';
+        }
+
+        #yes,
+        #no {
+            display: inline-block;
+            /* Initially show the buttons */
+        }
+
+        #yes.hide,
+        #no.hide,
+        #messagep.hide {
+            display: none;
+            /* Hide buttons when class "hide" is added */
+        }
+
+        #confirmation {
+            display: none;
+            /* Initially hide the confirmation */
+        }
+
+        #confirmation p {
+            margin: 10px 0;
+            /* Initially hide the confirmation */
+        }
+
+        #confirmation.show {
+            display: block;
+            /* Show confirmation when class "show" is added */
+        }
+
+        .wrap__button {
+            display: flex;
+            align-items: center;
+        }
+
+        .wrap__button p {
+            margin: 0 15px;
+        }
+
+        #message {
+            margin-top: 0;
+        }
+
+        img {
+            max-width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="prompt">
+        <div class="prompt__wrapper">
+            <p id="message">Gostarias de um date comigo S ou N?</p>
+            <div class="wrap__button">
+                <button id="yes">S</button>
+                <p id="messagep">ou</p>
+                <button id="no">N</button>
+            </div>
+
+            <div id="confirmation">
+                <img src="https://media.giphy.com/media/w0jr3kVEbl7eU/giphy.gif" />
+                <h2>Tá marcado então, momoi!</h2>
+                <p><strong>Data: </strong>22/07/23</p>
+                <p><strong>Traje: </strong>Chique e confortável</p>
+                <p><strong>Horário: </strong>21hrs</p>
+                <p><strong>Data: </strong>22/07/23</p>
+                <p><strong>Webcam obrigatória!!!</strong></p>
+                <p>Obrigado pela colaboração.</p>                
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const prompt = document.getElementById("prompt");
+        const message = document.getElementById("message");
+        const messageP = document.getElementById("messagep");
+        const yesBtn = document.getElementById("yes");
+        const noBtn = document.getElementById("no");
+        const confirmation = document.getElementById("confirmation");
+
+        window.onload = function () {
+            prompt.style.display = "block";
+        };
+
+        yesBtn.onclick = function () {
+            message.style.display = "none";
+            yesBtn.classList.add("hide");
+            noBtn.classList.add("hide");
+            messageP.classList.add("hide");
+            confirmation.classList.add("show");
+            prompt.style.left = '50%';
+            prompt.style.top = '50%';
+        };
+
+        noBtn.onclick = function () {
+            const x = Math.floor(Math.random() * (window.innerWidth - prompt.offsetWidth));
+            const y = Math.floor(Math.random() * (window.innerHeight - prompt.offsetHeight));
+            /* Convert to the left/top values to revert the effect of the transform property */
+            prompt.style.left = `calc(${x}px + ${prompt.offsetWidth / 2}px)`;
+            prompt.style.top = `calc(${y}px + ${prompt.offsetHeight / 2}px)`;
+        };
+    </script>
+</body>
+
+</html>
